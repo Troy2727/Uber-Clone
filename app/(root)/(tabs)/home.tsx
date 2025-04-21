@@ -134,7 +134,6 @@ const Home = () => {
               Recent Rides
             </Text>
           </>
-        }
       />
     </SafeAreaView>
   );

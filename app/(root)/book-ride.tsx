@@ -1,6 +1,5 @@
 import { useUser } from "@clerk/clerk-expo";
-import { StripeProvider, initStripe } from "@stripe/stripe-react-native";
-import { useEffect } from "react";
+import { StripeProvider } from "@stripe/stripe-react-native";
 import { Image, Text, View } from "react-native";
 
 import Payment from "@/components/Payment";
@@ -13,13 +12,6 @@ const BookRide = () => {
   const { user } = useUser();
   const { userAddress, destinationAddress } = useLocationStore();
   const { drivers, selectedDriver } = useDriverStore();
-
-  useEffect(() => {
-    initStripe({
-      publishableKey: process.env.EXPO_PUBLIC_STRIPE_PUBLISHABLE_KEY!,
-      merchantIdentifier: "merchant.com.uber",
-    });
-  }, []);
 
   const driverDetails = drivers?.filter(
     (driver) => +driver.id === selectedDriver

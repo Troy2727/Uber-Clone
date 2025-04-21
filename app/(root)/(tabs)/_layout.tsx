@@ -30,6 +30,7 @@ const TabIcon = ({
 export default function Layout() {
   return (
     <Tabs
+      initialRouteName="index"
       screenOptions={{
         tabBarActiveTintColor: "white",
         tabBarInactiveTintColor: "white",
