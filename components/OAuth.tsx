@@ -39,10 +39,14 @@ const OAuth = () => {
   };
 
   return (
-    <View style={tw`w-full`}>
-      <View style={tw`flex-row justify-center gap-4`}>
+    <View style={tw`w-full mt-6`}>
+      <Text style={tw`text-center mb-4 text-gray-500 font-JakartaMedium`}>
+        Or
+      </Text>
+
+      <View style={tw`flex-row justify-between mb-3`}>
         <TouchableOpacity
-          style={tw`flex-1 flex-row items-center justify-center p-3 bg-white border border-gray-200 rounded-xl shadow-soft`}
+          style={tw`flex-row items-center justify-center py-3 px-5 bg-white border border-gray-200 rounded-full shadow-sm w-[48%]`}
           onPress={handleGoogleSignIn}
           disabled={loading}
         >
@@ -51,13 +55,13 @@ const OAuth = () => {
             resizeMode="contain"
             style={tw`w-5 h-5 mr-2`}
           />
-          <Text style={tw`text-base font-JakartaMedium text-gray-800`}>
+          <Text style={tw`text-base font-JakartaSemiBold text-gray-800`}>
             Google
           </Text>
         </TouchableOpacity>
 
         <TouchableOpacity
-          style={tw`flex-1 flex-row items-center justify-center p-3 bg-[#3b5998] rounded-xl shadow-soft`}
+          style={tw`flex-row items-center justify-center py-3 px-5 bg-[#1877F2] rounded-full shadow-sm w-[48%]`}
         >
           <Ionicons
             name="logo-facebook"
@@ -65,17 +69,17 @@ const OAuth = () => {
             color="white"
             style={tw`mr-2`}
           />
-          <Text style={tw`text-base font-JakartaMedium text-white`}>
+          <Text style={tw`text-base font-JakartaSemiBold text-white`}>
             Facebook
           </Text>
         </TouchableOpacity>
       </View>
 
       <TouchableOpacity
-        style={tw`flex-row items-center justify-center p-3 bg-black rounded-xl shadow-soft mt-4`}
+        style={tw`flex-row items-center justify-center py-3 bg-black rounded-full shadow-sm`}
       >
         <Ionicons name="logo-apple" size={20} color="white" style={tw`mr-2`} />
-        <Text style={tw`text-base font-JakartaMedium text-white`}>
+        <Text style={tw`text-base font-JakartaSemiBold text-white`}>
           Sign in with Apple
         </Text>
       </TouchableOpacity>

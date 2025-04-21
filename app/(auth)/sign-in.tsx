@@ -1,9 +1,17 @@
 import { useSignIn } from "@clerk/clerk-expo";
 import { Link, router } from "expo-router";
 import { useCallback, useState } from "react";
-import { Alert, Image, ScrollView, Text, View } from "react-native";
+import {
+  Alert,
+  Image,
+  ScrollView,
+  Text,
+  TouchableOpacity,
+  View,
+} from "react-native";
 
-import CustomButton from "@/components/CustomButton";
+import tw from "@/lib/tw";
+
 import InputField from "@/components/InputField";
 import OAuth from "@/components/OAuth";
 import { icons, images } from "@/constants";
@@ -69,11 +77,12 @@ const SignIn = () => {
             onChangeText={(value) => setForm({ ...form, password: value })}
           />
 
-          <CustomButton
-            title="Sign In"
+          <TouchableOpacity
             onPress={onSignInPress}
-            className="mt-6"
-          />
+            style={tw`bg-[#0D8BFF] mt-6 py-4 rounded-full flex items-center justify-center shadow-sm`}
+          >
+            <Text style={tw`text-white font-JakartaBold text-lg`}>Sign In</Text>
+          </TouchableOpacity>
 
           <OAuth />
 
