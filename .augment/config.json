@@ -1,0 +1,17 @@
+{
+  "augment": {
+    "mcpServers": [
+      {
+        "name": "sqlite",
+        "command": "npx",
+        "args": ["-y", "mcp-server-sqlite", "--db-path", "./data/test.db"]
+      }
+    ],
+    "settings": {
+      "database": {
+        "path": "./data/test.db",
+        "migrations": "./data/migrations"
+      }
+    }
+  }
+}

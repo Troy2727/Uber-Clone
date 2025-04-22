@@ -1,6 +1,6 @@
 /** @type {import('tailwindcss').Config} */
 module.exports = {
-  content: [],
+  content: ["./app/**/*.{js,jsx,ts,tsx}", "./components/**/*.{js,jsx,ts,tsx}"],
   theme: {
     extend: {
       fontFamily: {
@@ -72,11 +72,16 @@ module.exports = {
           100: "#CED1DD",
           200: "#858585",
           300: "#EEEEEE",
-          400: "#0CC25F",
+          400: "#0286FF", // Changed from green to blue
           500: "#F6F8FA",
           600: "#E6F3FF",
           700: "#EBEBEB",
           800: "#ADADAD",
+        },
+        shadow: {
+          soft: "0 2px 4px rgba(0, 0, 0, 0.05)",
+          medium: "0 4px 6px rgba(0, 0, 0, 0.1)",
+          hard: "0 10px 15px rgba(0, 0, 0, 0.15)",
         },
       },
     },

@@ -41,6 +41,11 @@ const InputField = ({
     outputRange: ["#E5E5E5", "#0286FF"],
   });
 
+  const shadowOpacity = focusAnim.interpolate({
+    inputRange: [0, 1],
+    outputRange: [0.05, 0.15],
+  });
+
   const handleFocus = () => setIsFocused(true);
   const handleBlur = () => setIsFocused(false);
 
@@ -57,19 +62,28 @@ const InputField = ({
           </Text>
           <Animated.View
             style={[
-              tw`flex flex-row justify-start items-center relative bg-white rounded-xl shadow-soft ${containerStyle}`,
-              { borderWidth: 1, borderColor },
+              tw`flex flex-row justify-start items-center relative bg-white rounded-xl ${containerStyle}`,
+              {
+                borderWidth: 1,
+                borderColor,
+                elevation: 2,
+                shadowColor: "#000",
+                shadowOffset: { width: 0, height: 2 },
+                shadowOpacity,
+                shadowRadius: 4,
+              },
             ]}
           >
             {icon && (
               <Image source={icon} style={tw`w-5 h-5 ml-4 ${iconStyle}`} />
             )}
             <TextInput
-              style={tw`rounded-xl py-3 px-4 font-JakartaMedium text-[15px] flex-1 ${inputStyle} text-left`}
+              style={tw`rounded-xl py-3.5 px-4 font-JakartaMedium text-[15px] flex-1 ${inputStyle} text-left`}
               secureTextEntry={secureTextEntry}
               onFocus={handleFocus}
               onBlur={handleBlur}
               placeholderTextColor="#9CA3AF"
+              selectionColor="#0286FF"
               {...props}
             />
           </Animated.View>

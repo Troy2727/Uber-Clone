@@ -24,18 +24,18 @@ const RideLayout = ({
   return (
     <GestureHandlerRootView className="flex-1">
       <View className="flex-1 bg-white">
-        <View className="flex flex-col h-screen bg-blue-500">
+        <View className="flex flex-col h-screen bg-primary-500">
           <View className="flex flex-row absolute z-10 top-16 items-center justify-start px-5">
             <TouchableOpacity onPress={() => router.back()}>
-              <View className="w-10 h-10 bg-white rounded-full items-center justify-center">
+              <View className="w-10 h-10 bg-white rounded-full items-center justify-center shadow-md">
                 <Image
                   source={icons.backArrow}
                   resizeMode="contain"
-                  className="w-6 h-6"
+                  className="w-5 h-5"
                 />
               </View>
             </TouchableOpacity>
-            <Text className="text-xl font-JakartaSemiBold ml-5">
+            <Text className="text-xl font-JakartaSemiBold ml-5 text-white">
               {title || "Go Back"}
             </Text>
           </View>
@@ -47,12 +47,16 @@ const RideLayout = ({
           ref={bottomSheetRef}
           snapPoints={snapPoints || ["40%", "85%"]}
           index={0}
+          handleIndicatorStyle={{ backgroundColor: "#9CA3AF", width: 50 }}
+          backgroundStyle={{ backgroundColor: "#FFFFFF" }}
         >
           {title === "Choose a Rider" ? (
             <BottomSheetView
               style={{
                 flex: 1,
                 padding: 20,
+                borderTopLeftRadius: 24,
+                borderTopRightRadius: 24,
               }}
             >
               {children}
@@ -62,7 +66,10 @@ const RideLayout = ({
               style={{
                 flex: 1,
                 padding: 20,
+                borderTopLeftRadius: 24,
+                borderTopRightRadius: 24,
               }}
+              showsVerticalScrollIndicator={false}
             >
               {children}
             </BottomSheetScrollView>

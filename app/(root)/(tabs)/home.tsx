@@ -10,12 +10,14 @@ import {
   Image,
   FlatList,
   ActivityIndicator,
+  StyleSheet,
 } from "react-native";
 import { SafeAreaView } from "react-native-safe-area-context";
 
 import GoogleTextInput from "@/components/GoogleTextInput";
 import Map from "@/components/Map";
 import RideCard from "@/components/RideCard";
+import TestComponent from "@/components/TestComponent";
 import { icons, images } from "@/constants";
 import { useFetch } from "@/lib/fetch";
 import { useLocationStore } from "@/store";
@@ -74,12 +76,12 @@ const Home = () => {
   };
 
   return (
-    <SafeAreaView className="bg-general-500">
+    <SafeAreaView style={styles.container}>
       <FlatList
         data={recentRides?.slice(0, 5)}
         renderItem={({ item }) => <RideCard ride={item} />}
         keyExtractor={(item, index) => index.toString()}
-        className="px-5"
+        style={styles.flatList}
         keyboardShouldPersistTaps="handled"
         contentContainerStyle={{
           paddingBottom: 100,
@@ -103,16 +105,19 @@ const Home = () => {
         )}
         ListHeaderComponent={
           <>
-            <View className="flex flex-row items-center justify-between my-5">
-              <Text className="text-2xl font-JakartaExtraBold">
-                Welcome {user?.firstName}👋
-              </Text>
-              <TouchableOpacity
-                onPress={handleSignOut}
-                className="justify-center items-center w-10 h-10 rounded-full bg-white"
-              >
-                <Image source={icons.out} className="w-4 h-4" />
-              </TouchableOpacity>
+            <View className="flex flex-col my-5">
+              <View className="flex flex-row items-center justify-between">
+                <Text style={styles.welcomeText}>
+                  Welcome to Ryde, {user?.firstName}👋
+                </Text>
+                <TouchableOpacity
+                  onPress={handleSignOut}
+                  className="justify-center items-center w-10 h-10 rounded-full bg-white"
+                >
+                  <Image source={icons.out} className="w-4 h-4" />
+                </TouchableOpacity>
+              </View>
+              <TestComponent />
             </View>
 
             <GoogleTextInput
@@ -138,5 +143,20 @@ const Home = () => {
     </SafeAreaView>
   );
 };
+
+const styles = StyleSheet.create({
+  container: {
+    backgroundColor: "red", // Very obvious change
+    flex: 1,
+  },
+  flatList: {
+    paddingHorizontal: 20,
+  },
+  welcomeText: {
+    fontSize: 24,
+    fontFamily: "Jakarta-ExtraBold",
+    color: "#0286FF", // primary-500
+  },
+});
 
 export default Home;

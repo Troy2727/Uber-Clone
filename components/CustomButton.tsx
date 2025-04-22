@@ -17,9 +17,9 @@ const getBgVariantStyle = (variant: ButtonProps["bgVariant"]) => {
     case "danger":
       return "bg-red-500";
     case "success":
-      return "bg-green-500";
+      return "bg-primary-500"; // Changed from green to blue
     case "outline":
-      return "bg-transparent border-neutral-300 border-[1px]";
+      return "bg-transparent border-primary-300 border-[1px]";
     default:
       return "bg-primary-500";
   }
@@ -77,8 +77,15 @@ const CustomButton = ({
         onPressOut={handlePressOut}
         disabled={props.disabled || loading}
         style={[
-          tw`w-full rounded-2xl p-4 flex flex-row justify-center items-center shadow-soft ${getBgVariantStyle(bgVariant)} ${props.disabled ? "opacity-60" : "opacity-100"}`,
+          tw`w-full rounded-xl p-4 flex flex-row justify-center items-center shadow-md ${getBgVariantStyle(bgVariant)} ${props.disabled ? "opacity-60" : "opacity-100"}`,
           className && tw`${className}`,
+          {
+            elevation: 3,
+            shadowColor: "#000",
+            shadowOffset: { width: 0, height: 2 },
+            shadowOpacity: 0.1,
+            shadowRadius: 4,
+          },
         ]}
         {...props}
       >
@@ -95,7 +102,7 @@ const CustomButton = ({
               </View>
             )}
             <Text
-              style={tw`text-lg font-JakartaBold ${getTextVariantStyle(textVariant)}`}
+              style={tw`text-base font-JakartaSemiBold tracking-wide ${getTextVariantStyle(textVariant)}`}
             >
               {title}
             </Text>
